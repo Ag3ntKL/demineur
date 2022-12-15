@@ -142,7 +142,7 @@ def addNumber(event):
                 event.target.innerText = '‍‍‍‍‍‍‍'
 
             if gridResponse[int(event.target.id.split()[0])][int(event.target.id.split()[1])] == 0:
-                event.target.style.color = 'lime'
+                event.target.style.color = 'black'
             elif gridResponse[int(event.target.id.split()[0])][int(event.target.id.split()[1])] == 1:
                 event.target.style.color = 'lime'
             elif gridResponse[int(event.target.id.split()[0])][int(event.target.id.split()[1])] == 2:
