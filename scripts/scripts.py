@@ -77,28 +77,28 @@ async def launchTimer():
 # 2 fonctions pour changer la couleur du bouton de l'audio quand on le survole
 def hoverInSwitchAudio(event):
     if imgSwitchButton.src[-6:] == 'Up.svg':
-        imgSwitchButton.src = '../assets/volumeUpHover.svg'
+        imgSwitchButton.src = 'assets/volumeUpHover.svg'
     else:
-        imgSwitchButton.src = '../assets/volumeMuteHover.svg'
+        imgSwitchButton.src = 'assets/volumeMuteHover.svg'
 imgSwitchButton.addEventListener('mouseenter', create_proxy(hoverInSwitchAudio))
 
 def hoverOutSwitchAudio(event):
     if imgSwitchButton.src[-11:] == 'UpHover.svg':
-        imgSwitchButton.src = '../assets/volumeUp.svg'
+        imgSwitchButton.src = 'assets/volumeUp.svg'
     elif imgSwitchButton.src[-13:] == 'MuteHover.svg':
-        imgSwitchButton.src = '../assets/volumeMute.svg'
+        imgSwitchButton.src = 'assets/volumeMute.svg'
 imgSwitchButton.addEventListener('mouseleave', create_proxy(hoverOutSwitchAudio))
 
 # Fonction pour changer l'image du bouton volume et couper/reprendre la musique
 def switchAudio(*ags, **kws):
     if firstTime:
-        imgSwitchButton.src = '../assets/volumeMuteHover.svg'
+        imgSwitchButton.src = 'assets/volumeMuteHover.svg'
     elif music.paused:
         music.play()
-        imgSwitchButton.src = '../assets/volumeUpHover.svg'
+        imgSwitchButton.src = 'assets/volumeUpHover.svg'
     else:
         music.pause()
-        imgSwitchButton.src = '../assets/volumeMuteHover.svg'
+        imgSwitchButton.src = 'assets/volumeMuteHover.svg'
 
 # Fonction de débug pour obtenir l'id d'un élément
 def getId(event):
@@ -120,7 +120,7 @@ async def loseAnimation():
 
 # Fonction de débug pour changer le texte des boutons
 def addNumber(event):
-    global lose, bombsValue, firstTime
+    global lose, bombsValue, firstTime, win
     caseDiscover = 0
     if not lose and not win:
         if firstTime:
