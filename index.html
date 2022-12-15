@@ -6,15 +6,15 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <script defer src='https://pyscript.net/latest/pyscript.js'></script>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <link rel='stylesheet' href='../css/style.css'>
+        <link rel='stylesheet' href='/css/style.css'>
         <title>Démineur!</title>
     </head>
     
     <body>
-        <button id='switchAudioButton' py-onclick='switchAudio()'> <img draggable='false' src='../assets/volumeUp.svg' id='imgSwitchButton'></button>
+        <button id='switchAudioButton' py-onclick='switchAudio()'> <img draggable='false' src='/assets/volumeUp.svg' id='imgSwitchButton'></button>
 
-        <audio loop src='../assets/MusicSteinsGate.webm' id='music'></audio>
-        <audio src='../assets/explosionSound.mp3' id='explosionSound'></audio>
+        <audio loop src='/assets/MusicSteinsGate.webm' id='music'></audio>
+        <audio src='/assets/explosionSound.mp3' id='explosionSound'></audio>
 
         <h1 id='title'>DEMINEUR !</h1>
 
@@ -67,10 +67,10 @@
         
         <div id='quitDiv'>
             <p>A BIENTOT  !</p>
-            <img src='../assets/goodbye.gif'>
+            <img src='/assets/goodbye.gif'>
         </div>
         
     </body>
     
-    <py-script src='../scripts/scripts.py'></py-script>
+    <py-script src='/scripts/scripts.py'></py-script>
 </html>
