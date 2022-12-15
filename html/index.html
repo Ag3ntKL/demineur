@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang='fr'>
+    <head>
+        <meta charset='UTF-8'>
+        <link rel='stylesheet' href='https://pyscript.net/latest/pyscript.css'/>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <script defer src='https://pyscript.net/latest/pyscript.js'></script>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <link rel='stylesheet' href='../css/style.css'>
+        <title>Démineur!</title>
+    </head>
+    
+    <body>
+        <button id='switchAudioButton' py-onclick='switchAudio()'> <img draggable='false' src='../assets/volumeUp.svg' id='imgSwitchButton'></button>
+
+        <audio loop src='../assets/MusicSteinsGate.webm' id='music'></audio>
+        <audio src='../assets/explosionSound.mp3' id='explosionSound'></audio>
+
+        <h1 id='title'>DEMINEUR !</h1>
+
+        <div id='slidersDiv'>
+            <p id='xValue'>NOMBRES DE LIGNES : 16</p>
+            <input type='range' id='xSlider' class='slider' min='1' max='100' value='16'> <br>
+            <p id='yValue'>NOMBRES DE COLONNES : 16</p>
+            <input type='range' id='ySlider' class='slider' min='1' max='100' value='16'> <br>
+            <p id='bombsValue'>NOMBRES DE BOMBES : 40</p>
+            <input type='range' id='bombsSlider' class='slider' min='1' max='100' value='40'> <br>
+            <p id='bombsError'></p>
+        </div>
+
+        <button id='playButton' py-onClick='play()'>PLAY</button>
+
+        <p id='timer'></p>
+
+        <div id='gameSpace'>
+            <div id='grid'></div>
+            <p id='flagCount'></p>
+        </div>
+        
+        <center><button id='rulesButton' py-onClick='printWidgets("rulesOn")'>REGLES</button></center>
+        <center><div id='rulesDiv'>
+            <p id='rules'><br><u><strong>REGLES DU JEU :</strong></u> <br> <br>
+                • L'OBJECTIF DU JEU EST DE DECOUVRIR TOUTES LES CASES SANS BOMBES. <br>
+                • LA GRILLE EST COMPOSEE D'AUTANT DE CASES QUE VOUS LE VOULEZ, POUVANT ETRE AVEC OU SANS BOMBE. (PAR DEFAUT 16x16) <br>
+                • LE NOMBRE DE BOMBES QUE VOUS LE VOULEZ SONT PLACEES ALEATOIREMENT SUR LA GRILLE. (PAR DEFAUT 40) <br>
+                • AU DEBUT DU JEU, LE CONTENU DES CASES EST INVISIBLE ET A CHAQUE TOUR, VOUS DEVEZ SELECTIONNER UNE CASE A DECOUVRIR. <br>
+                • POUR DESIGNER LA CASE, FAITES UN CLIQUE GAUCHE SUR UNE CASE. <br>
+                • LA PREMIERE CASE CHOISIE PAR LE JOUEUR N'EST JAMAIS UNE BOMBE. <br>
+                • VOUS POUVEZ POSER UN DRAPEAU SUR LES CASES OU VOUS SUPPOSEZ QU'IL Y A UNE BOMBE, EN FAISANT UN CLIQUE DROIT SUR UNE CASE, VOUS POUVEZ ANNULER VOTRE CHOIX A TOUT MOMENT EN REVELANT LA CASE CHOISIE, A VOS RISQUES ET PERILS. <br>
+                • SI LA CASE CHOISIE CONTIENT UNE BOMBE, LE JEU EST PERDU. <br>
+                • SI LA CASE NE CONTIENT PAS DE BOMBE, LA CASE AFFICHE LE NOMBRE DE BOMBES DANS L'ENTOURAGE PROCHE (C'EST-A-DIRE LES HUIT CASES AUTOURS). <br>
+                • SI VOUS DECOUVREZ TOUTES LES CASES SAUF CELLES CONTENANT DES BOMBES, VOUS GAGNEZ. <br>
+                • LE JEU S'ARRETE LORS D'UNE VICTOIRE OU D'UNE DEFAITE ET L'ENSEMBLE DES CASES SERONT ALORS REVELEES. <br>
+                • POUR RELANCER UNE PARTIE, RECHARGER LA PAGE INTERNET, LE JEU RECOMMENCERA. <br> <br>
+            </p>
+        </div></center>
+        <center><button id='backButton' py-onClick='ensure_future(printWidgets("rulesOff"))'>RETOURNER AU JEU</button></center>
+        
+        
+        <div id='retryDiv'>
+            <br>
+            <br>
+            <p>VOULEZ-VOUS REJOUER ?</p>
+            <button id='yes' py-onClick='location.reload()'>OUI</button>
+            <button id='no' py-onClick='printWidgets(3)'>NON</button>
+        </div>
+        
+        <div id='quitDiv'>
+            <p>A BIENTOT  !</p>
+            <img src='../assets/goodbye.gif'>
+        </div>
+        
+    </body>
+    
+    <py-script src='../scripts/scripts.py'></py-script>
+</html>
