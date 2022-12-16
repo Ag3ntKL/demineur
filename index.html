@@ -14,7 +14,7 @@
     <body>
         <button id='switchAudioButton' py-onclick='switchAudio()'> <img draggable='false' src='assets/volumeUp.svg' id='imgSwitchButton'></button>
 
-        <audio loop src='assets/doom.mp3' id='music'></audio>
+        <audio loop src='assets/MusicSteinsGate.webm' id='music'></audio>
         <audio src='assets/explosionSound.mp3' id='explosionSound'></audio>
 
         <h1 id='title'>DEMINEUR !</h1>
@@ -57,18 +57,27 @@
         </div></center>
         <center><button id='backButton' py-onClick='ensure_future(printWidgets("rulesOff"))'>RETOURNER AU JEU</button></center>
         
-        
+        <div id="loseDiv">
+            <p>VOUS AVEZ PERDU !</p>
+            <img src="assets/lose.gif">
+        </div>
+
+        <center><div id="winDiv">
+            <p id="winText">VOUS AVEZ GAGNE !</p>
+            <img src="assets/win.gif">
+        </div></center>
+
         <div id='retryDiv'>
             <br>
             <br>
-            <p>VOULEZ-VOUS REJOUER ?</p>
+            <p id="loseText">VOULEZ-VOUS REJOUER ?</p>
             <button id='yes' py-onClick='location.reload()'>OUI</button>
             <button id='no' py-onClick='printWidgets(3)'>NON</button>
         </div>
         
         <div id='quitDiv'>
             <p>A BIENTOT  !</p>
-            <img src='assets/goodbye.gif'>
+            <img id="loseImg" src='assets/goodbye.gif'>
         </div>
         
         <p></p>
