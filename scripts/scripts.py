@@ -20,15 +20,19 @@ rulesDiv = document.getElementById('rulesDiv')
 xSlider = document.getElementById('xSlider')
 ySlider = document.getElementById('ySlider')
 quitDiv = document.getElementById('quitDiv')
+loseDiv = document.getElementById('loseDiv')
+winDiv = document.getElementById('winDiv')
 timer = document.getElementById('timer')
 music = document.getElementById('music')
 title = document.getElementById('title')
 grid = document.getElementById('grid')
 rulesActive = False
+music.volume = 0.1
 firstTime = True
 bombsValue = 40
 lose = False
 win = False
+
 
 # Fonction pour changer la valeurs des sliders à chaque changement
 def updateSliders(event):
@@ -116,7 +120,7 @@ async def loseAnimation():
             document.getElementById(f'{ordonne} {abscisse}').style.backgroundColor = 'crimson'
             await sleep(0.1)
     await sleep(1)
-    printWidgets(2)
+    printWidgets('lose')
 
 # Fonction de débug pour changer le texte des boutons
 def addNumber(event):
@@ -165,6 +169,7 @@ def addNumber(event):
 
             if caseDiscover == int(bombsSlider.value):
                 win = True
+                printWidgets('win')
 
 # Fonction pour ajouter un drapeau dans la case si cela est possible
 def addFlag(event):
@@ -215,12 +220,14 @@ def printWidgets(order):
         slidersDiv.style.display = 'none'
         gameSpace.style.display = 'block'
     elif order == 'rulesOn':
-        if not lose:
+        if not lose and not win:
             backButton.style.display = 'block'
+        winDiv.style.display = 'none'
         rulesButton.style.display = 'none'
         rulesDiv.style.display = 'block'
         gameSpace.style.display = 'none'
         timer.style.display = 'none'
+        loseDiv.style.display = 'none'
         global rulesActive
         rulesActive = True
     elif order == 'rulesOff':
@@ -230,18 +237,26 @@ def printWidgets(order):
         rulesDiv.style.display = 'none'
         timer.style.display = 'block'
         rulesActive = False
-    elif order == 2:
+    elif order == 'lose':
         gameSpace.style.display = 'none'
         retryDiv.style.display = 'block'
+        loseDiv.style.display = 'block'
+        music.pause()
+    elif order == 'win':
+        gameSpace.style.display = 'none'
+        retryDiv.style.display = 'block'
+        winDiv.style.display = 'block'
+        music.pause()
     elif order == 3:
         switchAudioButton.style.display = 'none'
         rulesButton.style.display = 'none'
+        rulesDiv.style.display = 'none'
         retryDiv.style.display = 'none'
         quitDiv.style.display = 'block'
         title.style.display = 'none'
         timer.style.display = 'none'
         ensure_future(quitGame())
-        
+
 async def quitGame():
     await sleep(1)
     window.close()
@@ -265,7 +280,6 @@ def verifSetting():
 # Fonction pour jouer la musique au début de la partie, si l'utilisateur ne l'a pas couper avant
 def playMusic():
     if imgSwitchButton.src[-6:] == 'Up.svg':
-        music.volume = 0.1
         music.play()
 
 # Fonction principal éxécutant toutes les autres fonctions dans le bon ordre
